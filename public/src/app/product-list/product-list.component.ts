@@ -1,3 +1,4 @@
+import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -8,11 +9,25 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
 
+  productList: any;
+
   constructor(
+    public _httpService: HttpService,
     public route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
+    this.getAll();
+  }
+
+  getAll() {
+    console.log('In component');
+    let observable = this._httpService.getAll();
+    observable.subscribe( data => {
+      console.log('Data: ', data)
+      console.log('Products: ', data['products'])
+      this.productList = data['products'];
+    })
   }
 
 }

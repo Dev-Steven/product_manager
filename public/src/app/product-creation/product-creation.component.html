@@ -1,11 +1,14 @@
 <h1>Create a New Product</h1>
 
-<form action="">
-    <label for="">Title <input type="text" name="" id=""></label>
+<form (submit)="addProduct()">
+    <p class="small text-danger" *ngIf='err.name'>{{ err.name.message }}</p>
+    <label for="">Title <input type="text" name="newProduct.name" [(ngModel)]="newProduct.name"></label>
     <br>
-    <label for="">Price <input type="text" name="" id=""></label>
+    <p class="small text-danger" *ngIf='err.price'>{{ err.price.message }}</p>
+    <label for="">Price <input type="text" name="newProduct.price" [(ngModel)]="newProduct.price"></label>
     <br>
-    <label for="">Image url <input type="text" name="" id=""></label>
+    <p class="small text-danger" *ngIf='err.img'>{{ err.img.message }}</p>
+    <label for="">Image url <input type="text" name="newProduct.img" [(ngModel)]="newProduct.img"></label>
     <br>
-    <button class="btn btn-success">Create</button> <button class="btn btn-warning">Cancel</button>
+    <button type="submit" class="btn btn-success">Create</button> <button class="btn btn-warning" [routerLink]="['/products']" >Cancel</button>
 </form>
