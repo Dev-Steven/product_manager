@@ -18,5 +18,10 @@ export class HttpService {
     return this._http.post('/product/create', prod)
   }
 
+  delete(id) {
+    console.log('In service');
+    return this._http.delete(`/products/delete/${id}`)
+  }
+
 }
 

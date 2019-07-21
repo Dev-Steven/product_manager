@@ -7,6 +7,6 @@ module.exports = function(app) {
     // app.get("/product/:id", products.getOne)
     app.post("/product/create", products.create)
     // app.put("/product/update/:id", products.update)
-    // app.delete("/products/delete/:id", products.delete)
+    app.delete("/products/delete/:id", products.delete)
 
 }

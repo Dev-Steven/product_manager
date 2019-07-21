@@ -30,4 +30,14 @@ export class ProductListComponent implements OnInit {
     })
   }
 
+  deleteProduct(id: String) {
+    console.log('In component');
+    let observable= this._httpService.delete(id);
+    observable.subscribe( data => {
+      console.log('product deleted');
+      this.getAll();
+    })
+
+  }
+
 }

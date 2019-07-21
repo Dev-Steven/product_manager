@@ -19,7 +19,7 @@ module.exports = {
 
     create: (req, res) => {
         var user = new Product(req.body);
-        user.save((err, newProduct) => {
+        user.save( (err, newProduct) => {
             // If there's an error, enter
             if(err){
                 console.log(err);
@@ -35,4 +35,20 @@ module.exports = {
             }
         });
     },
+
+    delete: (req, res) => {
+        console.log(`In products, ID is ${req.params.id}`);
+        Product.findByIdAndDelete( (req.params.id), (err, data) => {
+
+            if(err){
+                console.log("There's was an error deleting", err);
+                res.json({message: "error", error: err});
+            }
+            else {
+                console.log('Data: ', data);
+                res.json({message: "success", deleted: data})
+            }
+
+        });
+    }
 }
