@@ -1,12 +1,15 @@
 <h1>Edit Product</h1>
 
-<form action="">
-        <label for="">Title <input type="text" name="" id=""></label>
-        <br>
-        <label for="">Price <input type="text" name="" id=""></label>
-        <br>
-        <label for="">Image url <input type="text" name="" id=""></label>
-        <br>
-        <button class="btn btn-primary">Update</button> <button class="btn btn-danger">Delete</button>
-    </form>
+<form (submit)="updateProduct()">
+    <p class="small text-danger" *ngIf="err.name">{{ err.name.message }}</p>
+    <label for="">Title <input type="text" name="updatedProduct.name" [(ngModel)]="updatedProduct.name" placeholder="{{currentProduct.currentProduct.name}}"></label>
+    <br>
+    <p class="small text-danger" *ngIf="err.name">{{ err.price.message }}</p>
+    <label for="">Price <input type="text" name="updatedProduct.price" [(ngModel)]="updatedProduct.price" placeholder="{{currentProduct.currentProduct.price}}"></label>
+    <br>
+    <p class="small text-danger">{{ err.img.message }}</p>
+    <label for="">Image url <input type="text" name="updatedProduct.img" [(ngModel)]="updatedProduct.img" placeholder="{{currentProduct.currentProduct.img}}"></label>
+    <br>
+    <button type="submit" class="btn btn-primary">Update</button> <button class="btn btn-danger" (click)="deleteProduct(currentProduct.currentProduct._id)" >Delete</button>
+</form>
     

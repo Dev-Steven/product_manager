@@ -13,9 +13,18 @@ export class HttpService {
     return this._http.get('/products')
   }
 
+  getOne(id) {
+    return this._http.get(`/product/${id}`);
+  }
+
   create(prod) {
     console.log('In service')
     return this._http.post('/product/create', prod)
+  }
+
+  edit(id, update) {
+    console.log('In service');
+    return this._http.put(`/product/update/${id}`, update);
   }
 
   delete(id) {

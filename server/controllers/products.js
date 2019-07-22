@@ -17,6 +17,19 @@ module.exports = {
         });
     },
 
+    getOne: (req, res) => {
+        Product.findById( (req.params.id), (err, data) => {
+            if(err){
+                console.log("There's an error", err);
+                res.json({message: "error", error: err});
+            }
+            else {
+                console.log('Data: ', data);
+                res.json({message: "success", currentProduct: data})
+            }
+        });
+    },
+
     create: (req, res) => {
         var user = new Product(req.body);
         user.save( (err, newProduct) => {
@@ -34,6 +47,26 @@ module.exports = {
                 res.json({message: "success", products: newProduct});
             }
         });
+    },
+
+    update: (req, res) => {
+        console.log('In Products')
+        console.log(`id: ${req.params.id}`);
+        Product.findByIdAndUpdate( {_id: req.params.id}, req.body, {runValidators:true}, (err,data) => {
+            console.log('in findbyidandupdate')
+            if(err) {
+                console.log('error');
+                res.json({message: "error", error: err});
+            }
+            else {
+                console.log('success', data);
+                res.json({message: "success", data})
+            }
+        })
+        // console.log('in findbyidandupdate')
+        // Product.findByIdAndUpdate(req.params.id, req.body)
+        //     .then(data => res.json(data))
+        //     .catch(err => res.json(err));
     },
 
     delete: (req, res) => {

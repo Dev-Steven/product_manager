@@ -10,7 +10,6 @@ import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductCreationComponent } from './product-creation/product-creation.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
-import { ProductDeleteComponent } from './product-delete/product-delete.component';
 
 
 @NgModule({
@@ -20,7 +19,6 @@ import { ProductDeleteComponent } from './product-delete/product-delete.componen
     ProductListComponent,
     ProductCreationComponent,
     ProductEditComponent,
-    ProductDeleteComponent
   ],
   imports: [
     BrowserModule,
